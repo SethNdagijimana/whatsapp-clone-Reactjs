@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState }from 'react';
 import "./sidebar.css";
 import {Avatar, IconButton } from "@mui/material";
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
@@ -8,10 +8,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import SidebarChat from './SidebarChat';
 
 function Sidebar() {
+
+  const [isOpen,setIsOpen] = useState(false);
+  const onMenuButtonClick =(evt) => {
+
+      setIsOpen(!isOpen)    
+  }
   return (
     <div className='sidebar'>
     <div className='sidebar_header'>
-      <Avatar /> 
+    <IconButton>
+      <Avatar />  
+      </IconButton>
       <div className='sidebar__headerRight'>   
       <IconButton> 
         <DonutLargeIcon />          
@@ -21,15 +29,28 @@ function Sidebar() {
        <ChatIcon />
        </IconButton>
        
-        <IconButton>
-        <MoreVertIcon />
-        </IconButton>
+        <button onClick={onMenuButtonClick}>
+        <MoreVertIcon className="menu" />
+        <div className={`menu-class  ${isOpen ? 'visible':""}`}>
+                            
+                            <label><button>New Group</button></label>
+                            <label><button>Starred Messages</button></label>
+                            <label><button>Settings</button></label>
+                            <label><button>Log Out</button></label>
+                            
+
+                        </div>
+        </button>
+        
         
       </div>
+      
      </div>
     <div className='sidebar_search'>
     <div className="sidebar_searchContainer">
+    <IconButton>
         <SearchIcon />
+        </IconButton>
         <input placeholder='Search or start a new chat' type="text" />
         </div>
     </div>
