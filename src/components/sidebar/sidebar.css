@@ -58,21 +58,20 @@
 
 .menu-class
 {
-    display: inline-block;
-    font: inherit;
-    vertical-align: initial;
+    
+
     position:absolute;
-     top: 10%;
+     top: 13%;
+     left: 20%;
     background-color: #f6f6f6;  
-    padding-right: 58px;
-    padding-left: 24px;
+    padding: 5px ;
    
 }
 
 .menu-class label button{
     display: flex;
-    flex: 0.36;
-    border: none;
+    
+    border: 1px  lightgray;
     text-align: center;
     justify-content: center;
     width: 193px;

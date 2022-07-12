@@ -1,4 +1,4 @@
-import React, {useState }from 'react';
+import React, {useState, useEffect }from 'react';
 import "./sidebar.css";
 import {Avatar, IconButton } from "@mui/material";
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
@@ -9,11 +9,22 @@ import SidebarChat from './SidebarChat';
 
 function Sidebar() {
 
+
+
   const [isOpen,setIsOpen] = useState(false);
   const onMenuButtonClick =(evt) => {
 
       setIsOpen(!isOpen)    
   }
+
+  const [rooms, setRooms] = useState([]);
+
+  //setRooms(!rooms)
+
+  useEffect(() => {
+
+    //firebase
+  }, [])
   return (
     <div className='sidebar'>
     <div className='sidebar_header'>
@@ -46,7 +57,7 @@ function Sidebar() {
       </div>
       
      </div>
-    <div className='sidebar_search'>
+    <div className='sidebar_search' >
     <div className="sidebar_searchContainer">
     <IconButton>
         <SearchIcon />
@@ -55,6 +66,7 @@ function Sidebar() {
         </div>
     </div>
     <div className='sidebar_chats'>
+   
       <SidebarChat addNewChat/>
       <SidebarChat />
        <SidebarChat />

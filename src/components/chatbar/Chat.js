@@ -4,15 +4,30 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import MicIcon from '@mui/icons-material/Mic';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import "./chat.css";
 
 function Chat() {
+  const [input, setInput] = useState("");
+  const [seed, setSeed] = useState("");
+
+  useEffect (() => {
+    setSeed(Math.floor(Math.random() * 5000));
+  }, []);
+
+  const sendMessage = (e) => {
+
+    e.preventDefault();
+    console.log("you typed", input);
+    
+    setInput("");
+
+  }
   return (
     <div className='chat'>
 
     <div className="chat_header">
-        <Avatar src="https://avatars.dicebear.com/api/human/123.svg" />
+        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg `} />
         
         <div className="chat_header_info">
              <h3>React</h3>
@@ -46,9 +61,9 @@ function Chat() {
     <div className='chat_footer'>
         <InsertEmoticonIcon />
         <form>
-            <input placeholder="Type a message" type="text" />
+            <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a message" type="text" />
 
-            <button type="submit">Send a message</button>
+            <button onClick={sendMessage} type="submit">Send a message</button>
         </form>
         <MicIcon />
 
