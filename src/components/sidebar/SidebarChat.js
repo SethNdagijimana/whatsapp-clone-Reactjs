@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Avatar } from "@mui/material";
 import "./sidebarchat.css";
 
-function SidebarChat({addNewChat }){
+function SidebarChat({ id, name,addNewChat }){
 
   const [seed, setSeed] = useState("");
 
@@ -14,7 +14,7 @@ function SidebarChat({addNewChat }){
         const roomName = prompt ("Please enter name for chat");
 
         if (roomName){
-            //do something later...
+            //do firebase..
         }
     };
 
@@ -23,7 +23,7 @@ function SidebarChat({addNewChat }){
     
     <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
     <div className='sidebarchat_info'>
-        <h2>Room name</h2>
+        <h2>{name}</h2>
         <p>Last message...</p>
     </div>
     </div>

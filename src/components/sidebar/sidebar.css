@@ -70,11 +70,10 @@
 
 .menu-class label button{
     display: flex;
-    
     border: 1px  lightgray;
     text-align: center;
     justify-content: center;
-    width: 193px;
+    width: 190px;
     background-color: transparent;
     padding: 13px 58px 13px 24px;
     cursor: pointer;

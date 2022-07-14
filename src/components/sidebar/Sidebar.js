@@ -6,6 +6,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import SidebarChat from './SidebarChat';
+import db from "../firebase";np
 
 function Sidebar() {
 
@@ -20,11 +21,25 @@ function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
   //setRooms(!rooms)
+  //setRooms (props.data)
 
   useEffect(() => {
 
     //firebase
-  }, [])
+
+    db.collection("rooms").onSnapshot(snapshot => (
+
+        setRooms(snapshot.docs.map(doc =>
+          
+          ({
+            id: doc.id,
+            data: doc.data(),
+          })
+          
+          ))
+      
+    ));
+  }, []);
   return (
     <div className='sidebar'>
     <div className='sidebar_header'>
